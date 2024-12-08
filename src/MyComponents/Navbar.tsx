@@ -3,9 +3,9 @@ import { NavItem } from '../types';
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Programs', href: '#programs' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Programs', href: '#about' },
+  { label: 'Meet the Children', href: '#contact' },
+  { label: 'About', href: '#contact' },
 ];
 
 const Navbar: React.FC = () => {

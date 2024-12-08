@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const MeetChildren: React.FC = () => {
   return (
-    <section className="py-24 relative overflow-hidden mb-[-5rem] mt-[5rem]" id="features">
+    <section className="py-24 relative overflow-hidden mb-[-5rem]" id="features">
       <div className="absolute inset-0 opacity-5 "></div>
       <div className="absolute inset-0 bg-zinc-90"></div>
 
