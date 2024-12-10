@@ -1,5 +1,3 @@
-import { BlurImage } from './BlurImage';
-
 export const DummyContent = () => {
   return (
     <>
@@ -18,11 +16,6 @@ export const DummyContent = () => {
               Langotiya jeetu ka mara hua yaar is ready to capture every
               thought.
             </p>
-            <BlurImage
-              src="https://cdn.pixabay.com/photo/2024/11/07/18/48/sofa-9181557_1280.jpg"
-              alt="Macbook mockup from Aceternity UI"
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-            />
           </div>
         );
       })}

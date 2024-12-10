@@ -15,7 +15,7 @@ const MeetChildren: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl font-bold text-neutral-200 mb-6"
           >
-            Meet Our Lovely Childrens
+            Meets Our Lovely Childrens
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

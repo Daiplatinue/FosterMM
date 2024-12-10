@@ -1,13 +1,13 @@
 import Navbar from '../src/MyComponents/Navbar';
 import Features from '../src/MyComponents/Features';
 import Programs from '../src/MyComponents/Programs';
-import Contact from '../src/MyComponents/Contact';
 import MeetChildren from '../src/MyComponents/ChildrenSection/MeetChildren';
 import { HeroParallax } from "./MyComponents/hero-parallax";
 import { Carousel, Card } from './MyComponents/Carousel';
 import BentoGrid from './MyComponents/BentoGrid';
 import { FocusCards } from './MyComponents/focus-cards';
 import Marque from './MyComponents/Marque';
+import { Footer } from './MyComponents/Footer';
 
 const products = [
   {
@@ -109,7 +109,7 @@ const carouselData = [
     src: "https://cdn.pixabay.com/photo/2016/11/23/14/39/asia-1853270_960_720.jpg",
     content: (
       <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
-        <img src="https://cdn.pixabay.com/photo/2024/03/31/23/25/butterfly-8667752_1280.png"/>
+        <img src="https://cdn.pixabay.com/photo/2024/03/31/23/25/butterfly-8667752_1280.png" />
         <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
           We are driven by the mission to provide every child with love, safety, and a brighter future.
         </p>
@@ -214,21 +214,16 @@ function App() {
     <div className="min-h-screen bg-zinc-900">
       <Navbar />
       <main>
-        <HeroParallax products={products} />
-        <Features />
-        <Carousel items={carouselCards} />
+        {/* <HeroParallax products={products} /> */}
+        {/* <Features /> */}
+        {/* <Carousel items={carouselCards} />
         <Marque />
         <Programs />
-        <BentoGrid />
+        <BentoGrid /> */}
         <MeetChildren />
         <FocusCards cards={focusCardsData} />
-        <Contact />
+        <Footer />
       </main>
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>© 2024 Foster Management Center. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }
