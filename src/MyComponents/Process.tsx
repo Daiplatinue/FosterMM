@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
+import axios from 'axios';
 
 interface AdoptProcessProps {
   onClose: () => void;
@@ -13,15 +14,15 @@ const AdoptProcess: React.FC<AdoptProcessProps> = ({ onClose }) => {
     age: '',
     language: '',
     religion: '',
-    race: '',
+    culturalBackground: '',
     familyBackground: '',
     aboutYourself: '',
-    medicationsTaken: '',
+    reasonAdoption: '',
     idType: '',
     frontIdImage: null as File | null,
     backIdImage: null as File | null,
   });
-  
+
   const [frontPreview, setFrontPreview] = useState<string>('');
   const [backPreview, setBackPreview] = useState<string>('');
   const signatureRef = useRef<SignatureCanvas>(null);
@@ -41,7 +42,6 @@ const AdoptProcess: React.FC<AdoptProcessProps> = ({ onClose }) => {
         [side === 'front' ? 'frontIdImage' : 'backIdImage']: file
       });
 
-      // Create preview URL
       const reader = new FileReader();
       reader.onloadend = () => {
         if (typeof reader.result === 'string') {
@@ -56,12 +56,35 @@ const AdoptProcess: React.FC<AdoptProcessProps> = ({ onClose }) => {
     }
   };
 
-  const handleSubmit = () => {
-    if (signatureRef.current) {
-      const signatureData = signatureRef.current.toDataURL();
-      console.log('Form submitted:', { ...formData, signature: signatureData });
+  const handleSubmit = async () => {
+    try {
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value !== null) {
+          formDataToSend.append(key, value);
+        }
+      });
+
+      if (signatureRef.current) {
+        const signatureData = signatureRef.current.toDataURL();
+        formDataToSend.append('signature', signatureData);
+      }
+
+      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+      const response = await axios.post('http://localhost:3000/api/auth/submit-form', formDataToSend, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      if (response.status === 201) {
+        alert('Form submitted successfully!');
+        onClose();
+      }
+    } catch (error: any) {
+      alert(error.response?.data?.message || 'Error submitting form. Please try again.');
     }
-    onClose();
   };
 
   const renderPage = () => {
@@ -129,11 +152,11 @@ const AdoptProcess: React.FC<AdoptProcessProps> = ({ onClose }) => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-200">Race</label>
+              <label className="block text-sm font-medium text-gray-200">Cultural Background</label>
               <input
                 type="text"
-                name="race"
-                value={formData.race}
+                name="culturalBackground"
+                value={formData.culturalBackground}
                 onChange={handleInputChange}
                 className="mt-1 block w-full rounded-md border border-gray-600 bg-gray-700 text-white px-3 py-2"
               />
@@ -164,10 +187,10 @@ const AdoptProcess: React.FC<AdoptProcessProps> = ({ onClose }) => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-200">Medications Taken</label>
+              <label className="block text-sm font-medium text-gray-200">Reason for Adoption</label>
               <textarea
-                name="medicationsTaken"
-                value={formData.medicationsTaken}
+                name="reasonAdoption"
+                value={formData.reasonAdoption}
                 onChange={handleInputChange}
                 className="mt-1 block w-full rounded-md border border-gray-600 bg-gray-700 text-white px-3 py-2"
                 rows={4}
@@ -335,9 +358,8 @@ const AdoptProcess: React.FC<AdoptProcessProps> = ({ onClose }) => {
               {[1, 2, 3, 4].map((step) => (
                 <div
                   key={step}
-                  className={`w-1/4 h-2 rounded-full mx-1 ${
-                    step <= currentPage ? 'bg-blue-500' : 'bg-gray-600'
-                  }`}
+                  className={`w-1/4 h-2 rounded-full mx-1 ${step <= currentPage ? 'bg-blue-500' : 'bg-gray-600'
+                    }`}
                 />
               ))}
             </div>

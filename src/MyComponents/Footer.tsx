@@ -5,14 +5,26 @@ export const Footer = () => {
       <div className="max-w-[980px] mx-auto px-4 py-4">
         <h2 className="text-2xl font-semibold mb-3">Quick Links</h2>
         <div className="flex gap-2 flex-wrap">
-          <button className="px-4 py-1 rounded-full bg-zinc-900 border border-gray-300 hover:border-gray-400 transition-colors text-sm">
-            Order Status ›
+          <button
+            className="px-4 py-1 rounded-full bg-zinc-900 border border-gray-300 hover:border-gray-400 transition-colors text-sm"
+            onClick={() => window.open("https://www.youtube.com/", "_blank", "noopener,noreferrer")}
+            type="button"
+          >
+            Youtube ›
           </button>
-          <button className="px-4 py-1 rounded-full bg-zinc-900 border border-gray-300 hover:border-gray-400 transition-colors text-sm">
-            Shopping Help ›
+          <button
+            className="px-4 py-1 rounded-full bg-zinc-900 border border-gray-300 hover:border-gray-400 transition-colors text-sm"
+            onClick={() => window.open("https://www.facebook.com/", "_blank", "noopener,noreferrer")}
+            type="button"
+          >
+            Facebook ›
           </button>
-          <button className="px-4 py-1 rounded-full bg-zinc-900 border border-gray-300 hover:border-gray-400 transition-colors text-sm">
-            Your Saves ›
+          <button
+            className="px-4 py-1 rounded-full bg-zinc-900 border border-gray-300 hover:border-gray-400 transition-colors text-sm"
+            onClick={() => window.open("https://www.discord.com/", "_blank", "noopener,noreferrer")}
+            type="button"
+          >
+            Discord ›
           </button>
         </div>
       </div>
@@ -23,70 +35,68 @@ export const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {/* Shop and Learn */}
             <div>
-              <h3 className="font-semibold mb-2">Shop and Learn</h3>
+              <h3 className="font-semibold mb-2">Special Thanks</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Store</a></li>
-                <li><a href="#" className="hover:underline">Mac</a></li>
-                <li><a href="#" className="hover:underline">iPad</a></li>
-                <li><a href="#" className="hover:underline">iPhone</a></li>
-                <li><a href="#" className="hover:underline">Watch</a></li>
-                <li><a href="#" className="hover:underline">AirPods</a></li>
-                <li><a href="#" className="hover:underline">TV & Home</a></li>
-                <li><a href="#" className="hover:underline">AirTag</a></li>
-                <li><a href="#" className="hover:underline">Accessories</a></li>
-                <li><a href="#" className="hover:underline">Gift Cards</a></li>
+                <li><a href="#" className="hover:underline">Sarah Rodriguez, M.</a></li>
+                <li><a href="#" className="hover:underline">Ethan James, M.</a></li>
+                <li><a href="#" className="hover:underline">Isabella Grace, T.</a></li>
+                <li><a href="#" className="hover:underline">Noah Alexander, C.</a></li>
+                <li><a href="#" className="hover:underline">Olivia Rose, H.</a></li>
+                <li><a href="#" className="hover:underline">Liam Matthew, B.</a></li>
+                <li><a href="#" className="hover:underline">Emily Claire, A.</a></li>
+                <li><a href="#" className="hover:underline">Mason Elijah, T.</a></li>
+                <li><a href="#" className="hover:underline">Ava Marie, P.</a></li>
+                <li><a href="#" className="hover:underline">Jackson Thomas, W.</a></li>
               </ul>
             </div>
 
             {/* Account */}
             <div>
-              <h3 className="font-semibold mb-2">Account</h3>
+              <h3 className="font-semibold mb-2">Account Management</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Manage Your Apple Account</a></li>
-                <li><a href="#" className="hover:underline">Apple Store Account</a></li>
-                <li><a href="#" className="hover:underline">iCloud.com</a></li>
+                <li><a href="#" className="hover:underline">Login Account</a></li>
+                <li><a href="#" className="hover:underline">Change Password</a></li>
+                <li><a href="#" className="hover:underline">Logout</a></li>
               </ul>
             </div>
 
             {/* Entertainment */}
             <div>
-              <h3 className="font-semibold mb-2">Entertainment</h3>
+              <h3 className="font-semibold mb-2">Center Addresses</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Apple One</a></li>
-                <li><a href="#" className="hover:underline">Apple TV+</a></li>
-                <li><a href="#" className="hover:underline">Apple Music</a></li>
-                <li><a href="#" className="hover:underline">Apple Arcade</a></li>
-                <li><a href="#" className="hover:underline">Apple Podcasts</a></li>
-                <li><a href="#" className="hover:underline">Apple Books</a></li>
-                <li><a href="#" className="hover:underline">App Store</a></li>
+                <li><a href="#" className="hover:underline">Barangay Talamban, Cebu City</a></li>
+                <li><a href="#" className="hover:underline">Barangay Pajo, Lapu-Lapu City</a></li>
+                <li><a href="#" className="hover:underline">Barangay Poblacion, Talisay City</a></li>
               </ul>
             </div>
 
             {/* Business and Education */}
             <div>
               <div className="mb-8">
-                <h3 className="font-semibold mb-2">For Business</h3>
+                <h3 className="font-semibold mb-2">Contact Us</h3>
                 <ul className="space-y-2">
-                  <li><a href="#" className="hover:underline">Apple and Business</a></li>
+                  <li><a href="#" className="hover:underline">(+63) 956 254 5753</a></li>
+                  <li><a href="#" className="hover:underline">(+63) 924 754 1812</a></li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">For Education</h3>
+                <h3 className="font-semibold mb-2">Programs</h3>
                 <ul className="space-y-2">
-                  <li><a href="#" className="hover:underline">Apple and Education</a></li>
-                  <li><a href="#" className="hover:underline">Shop for University</a></li>
+                  <li><a href="#" className="hover:underline">Home Placement Program</a></li>
+                  <li><a href="#" className="hover:underline">Emotional Support Program</a></li>
+                  <li><a href="#" className="hover:underline">Health and Wellness Program</a></li>
+                  <li><a href="#" className="hover:underline">Foster Parent Training Program</a></li>
                 </ul>
               </div>
             </div>
 
             {/* Apple Values */}
             <div>
-              <h3 className="font-semibold mb-2">Apple Values</h3>
+              <h3 className="font-semibold mb-2">Minimum Specs Requirements</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Accessibility</a></li>
-                <li><a href="#" className="hover:underline">Environment</a></li>
-                <li><a href="#" className="hover:underline">Privacy</a></li>
-                <li><a href="#" className="hover:underline">Supply Chain</a></li>
+                <li><a href="#" className="hover:underline">Intel (R) Core (TM) i3 CPU 10th Gen or higher</a></li>
+                <li><a href="#" className="hover:underline">8GB of RAM or higer</a></li>
+                <li><a href="#" className="hover:underline">NVIDIA GeForce GT 730 (1GB)</a></li>
               </ul>
             </div>
           </div>
@@ -94,7 +104,7 @@ export const Footer = () => {
           {/* Footer Notes */}
           <div className="mt-8 pt-4 border-t border-gray-300">
             <p className="text-neutral-200 mb-3">
-              More ways to shop: <a href="#" className="text-[#0066cc] hover:underline">Find a retailer</a> near you. Or call 1800-1651-0525 (Smart / PLDT), 1800-8474-7382 (Globe).
+              More ways to support: Visit our center or contact us at <a href="#" className="text-[#0066cc] hover:underline">1800-1651-0525 (Smart / PLDT)</a> to learn more about fostering opportunities and how you can help.
             </p>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-neutral-200">
               <p>Copyright © {new Date().getFullYear()} Enyaw Inc. All rights reserved.</p>

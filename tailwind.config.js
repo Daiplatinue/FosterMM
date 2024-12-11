@@ -27,6 +27,7 @@ module.exports = {
         aurora: "aurora 60s linear infinite",
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+          'spin-slow': 'spin 30s linear infinite',
       },
       keyframes: {
         aurora: {

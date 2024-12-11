@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Process from '@/MyComponents/Process'
+import Process from '@/MyComponents/Process';
 
 const cn = (...classes: (string | boolean | undefined)[]) => {
   return classes.filter(Boolean).join(" ");
@@ -20,9 +20,10 @@ interface DetailViewProps {
   onClose: () => void;
   onSiblingClick: (sibling: Card) => void;
   allCards: Card[];
+  isLoggedIn: boolean;
 }
 
-const DetailView: React.FC<DetailViewProps> = ({ card, onClose, onSiblingClick, allCards }) => {
+const DetailView: React.FC<DetailViewProps> = ({ card, onClose, onSiblingClick, allCards, isLoggedIn }) => {
   const [showAdoptProcess, setShowAdoptProcess] = useState(false);
 
   const siblings = allCards.filter(c =>
@@ -37,6 +38,14 @@ const DetailView: React.FC<DetailViewProps> = ({ card, onClose, onSiblingClick, 
     introduction: "A bright and cheerful child who loves to make others smile. Shows great potential in artistic activities.",
     personality: ["Friendly", "Creative", "Caring"],
     education: "Grade 2 student",
+  };
+
+  const handleBeginAdoption = () => {
+    if (!isLoggedIn) {
+      alert('Please log in first to begin the adoption process');
+      return;
+    }
+    setShowAdoptProcess(true);
   };
 
   return (
@@ -119,10 +128,12 @@ const DetailView: React.FC<DetailViewProps> = ({ card, onClose, onSiblingClick, 
               )}
 
               <div className="pt-4">
-                <button onClick={() => setShowAdoptProcess(true)} className="w-full bg-blue-500 text-white py-3 rounded-lg font-medium mb-3 hover:bg-blue-600 transition-colors">
+                <button
+                  onClick={handleBeginAdoption}
+                  className="w-full bg-blue-500 text-white py-3 rounded-lg font-medium mb-3 hover:bg-blue-600 transition-colors"
+                >
                   Begin Adoption Process
                 </button>
-                {showAdoptProcess && <Process onClose={() => setShowAdoptProcess(false)} />}
                 <button
                   onClick={onClose}
                   className="w-full text-gray-500 hover:text-gray-700 py-2 text-sm"
@@ -134,6 +145,7 @@ const DetailView: React.FC<DetailViewProps> = ({ card, onClose, onSiblingClick, 
           </div>
         </div>
       </div>
+      {showAdoptProcess && <Process onClose={() => setShowAdoptProcess(false)} />}
     </div>
   );
 };
@@ -185,7 +197,8 @@ Card.displayName = "Card";
 export function FocusCards({ cards }: { cards: Card[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
-
+  const userEmail = localStorage.getItem('userEmail') || sessionStorage.getItem('userEmail');
+  
   const handleCardClick = (card: Card) => {
     setSelectedCard(card);
   };
@@ -214,6 +227,7 @@ export function FocusCards({ cards }: { cards: Card[] }) {
           onClose={() => setSelectedCard(null)}
           onSiblingClick={handleSiblingClick}
           allCards={cards}
+          isLoggedIn={!!userEmail}
         />
       )}
     </>

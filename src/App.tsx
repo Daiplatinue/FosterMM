@@ -8,97 +8,85 @@ import BentoGrid from './MyComponents/BentoGrid';
 import { FocusCards } from './MyComponents/focus-cards';
 import Marque from './MyComponents/Marque';
 import { Footer } from './MyComponents/Footer';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect, useState, ReactNode } from 'react';
+import Admin from './MyComponents/Admin';
 
 const products = [
   {
     title: "January 12, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2022/02/12/13/29/desert-7008952_1280.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2022/02/12/13/29/desert-7008952_1280.jpg",
   },
   {
     title: "June 26, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2016/11/29/11/45/children-1869265_1280.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2016/11/29/11/45/children-1869265_1280.jpg",
   },
   {
     title: "July 5, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2023/02/11/06/52/children-7782100_1280.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2023/02/11/06/52/children-7782100_1280.jpg",
   },
   {
     title: "August 1, 2025",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2018/02/07/18/30/group-3137670_960_720.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2018/02/07/18/30/group-3137670_960_720.jpg",
   },
   {
     title: "Feb 9, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2021/10/07/15/24/park-6688951_960_720.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2021/10/07/15/24/park-6688951_960_720.jpg",
   },
   {
     title: "Sept 17, 2024",
     link: "https://app.pixelperfect.quest",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2021/10/07/15/24/park-6688951_960_720.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2021/10/07/15/24/park-6688951_960_720.jpg",
   },
   {
     title: "June 9, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2022/04/24/02/30/kid-7152758_960_720.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2022/04/24/02/30/kid-7152758_960_720.jpg",
   },
   {
     title: "Oct 2, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2019/06/08/19/41/girl-4260872_1280.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2019/06/08/19/41/girl-4260872_1280.jpg",
   },
   {
     title: "Nov 6, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2017/03/27/13/51/children-2178857_960_720.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2017/03/27/13/51/children-2178857_960_720.jpg",
   },
   {
     title: "Dec 27, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2015/07/28/22/05/child-865116_1280.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2015/07/28/22/05/child-865116_1280.jpg",
   },
   {
     title: "Sept 3, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2015/07/28/22/",
+    thumbnail: "https://cdn.pixabay.com/photo/2015/07/28/22/",
   },
   {
     title: "Oct 7, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2015/07/28/22/05/child-865116_1280.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2015/07/28/22/05/child-865116_1280.jpg",
   },
   {
     title: "January 16, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2016/08/15/10/14/amusement-park-1594958_960_720.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2016/08/15/10/14/amusement-park-1594958_960_720.jpg",
   },
   {
     title: "July 10, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2016/10/16/10/19/play-stone-1744790_960_720.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2016/10/16/10/19/play-stone-1744790_960_720.jpg",
   },
   {
     title: "Nov 12, 2024",
     link: "#",
-    thumbnail:
-      "https://cdn.pixabay.com/photo/2022/02/12/13/29/desert-7008952_1280.jpg",
+    thumbnail: "https://cdn.pixabay.com/photo/2022/02/12/13/29/desert-7008952_1280.jpg",
   },
 ];
 
@@ -205,11 +193,11 @@ const focusCardsData = [
   },
 ];
 
-function App() {
-  const carouselCards = carouselData.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
-  ));
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
 
+function MainLayout() {
   return (
     <div className="min-h-screen bg-zinc-900">
       <Navbar />
@@ -225,6 +213,65 @@ function App() {
         <Footer />
       </main>
     </div>
+  );
+}
+
+function AdminPage() {
+  return (
+    <div className="min-h-screen bg-zinc-900">
+      <Admin />
+      <main className="p-8">
+        <h1 className="text-4xl font-bold text-white mb-8">Admin Dashboard</h1>
+      </main>
+    </div>
+  );
+}
+
+function ProtectedRoute({ children }: ProtectedRouteProps) {
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const checkUserRole = async () => {
+      try {
+        const response = await fetch('/api/user-role');
+        const data = await response.json();
+        setUserRole(data.u_role);
+      } catch (error) {
+        console.error('Error checking user role:', error);
+        setUserRole(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkUserRole();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return userRole === 'admin' ? children : <Navigate to="/" replace />;
+}
+
+function App() {
+  const carouselCards = carouselData.map((card, index) => (
+    <Card key={card.src} card={card} index={index} />
+  ));
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminPage />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
